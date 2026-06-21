@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://ggiqij31r6cd"]
+
+[ext_resource type="Script" uid="uid://226v7kpm1mf3" path="res://player.gd" id="1_nxjfv"]
+[ext_resource type="Texture2D" uid="uid://r0aklbn7jj4q" path="res://Tomás.png" id="2_c3wx7"]
+[ext_resource type="Texture2D" uid="uid://c8cqjh0a0yyxw" path="res://sol.png" id="3_c3wx7"]
+[ext_resource type="Texture2D" uid="uid://cddrl2i2unkye" path="res://baliza1.png" id="4_yhuuu"]
+[ext_resource type="Script" uid="uid://by08wh75lini8" path="res://bola.gd" id="5_y45co"]
+[ext_resource type="Texture2D" uid="uid://7dgn2perjrl5" path="res://Bola.png" id="5_yhuuu"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pqrlx"]
+load_path = "res://.godot/imported/fundo.png-f9fbcbdbc60f772e394ba2c913e799d2.ctex"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pqrlx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c3wx7"]
+size = Vector2(320, 72.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pqrlx"]
+size = Vector2(1, 109)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nxjfv"]
+size = Vector2(4.009427, 108)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y45co"]
+size = Vector2(15, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yhuuu"]
+
+[node name="Node2D" type="Node2D" unique_id=1011260576]
+
+[node name="BackGround" type="Sprite2D" parent="." unique_id=397145876]
+position = Vector2(210.34062, 103)
+scale = Vector2(0.996875, 1)
+texture = SubResource("CompressedTexture2D_pqrlx")
+offset = Vector2(-51, -13)
+
+[node name="Player" type="CharacterBody2D" parent="BackGround" unique_id=635964307]
+position = Vector2(-122.99999, -0.99999994)
+scale = Vector2(0.4, 0.4)
+script = ExtResource("1_nxjfv")
+
+[node name="Sprite2D" type="Sprite2D" parent="BackGround/Player" unique_id=1944018303]
+position = Vector2(-1.8181963, -170)
+scale = Vector2(2, 2)
+texture = ExtResource("2_c3wx7")
+offset = Vector2(-37.499996, 62.499985)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackGround/Player" unique_id=2036680648]
+position = Vector2(-79.56114, -40)
+scale = Vector2(2, 2)
+shape = SubResource("CapsuleShape2D_pqrlx")
+
+[node name="Chao" type="StaticBody2D" parent="BackGround" unique_id=514456866]
+position = Vector2(0, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackGround/Chao" unique_id=811694080]
+position = Vector2(-49, 36.25)
+shape = SubResource("RectangleShape2D_c3wx7")
+
+[node name="Parededireita" type="StaticBody2D" parent="BackGround" unique_id=318285535]
+position = Vector2(107, -24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackGround/Parededireita" unique_id=1766503986]
+position = Vector2(2.0000062, -24)
+shape = SubResource("RectangleShape2D_pqrlx")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BackGround" unique_id=795983630]
+position = Vector2(-103, -24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackGround/StaticBody2D" unique_id=674683973]
+position = Vector2(-106.99532, -25)
+shape = SubResource("RectangleShape2D_nxjfv")
+
+[node name="Sol" type="Sprite2D" parent="BackGround" unique_id=521997007]
+position = Vector2(-173, -75)
+texture = ExtResource("3_c3wx7")
+
+[node name="Baliza" type="StaticBody2D" parent="BackGround" unique_id=726381322]
+
+[node name="Baliza" type="Sprite2D" parent="BackGround/Baliza" unique_id=192835026]
+position = Vector2(94, -11)
+scale = Vector2(0.9375, 1)
+texture = ExtResource("4_yhuuu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackGround/Baliza" unique_id=763042156]
+position = Vector2(102, -10)
+scale = Vector2(0.9375, 1)
+shape = SubResource("RectangleShape2D_y45co")
+
+[node name="Bola" type="CharacterBody2D" parent="BackGround" unique_id=1040223137]
+script = ExtResource("5_y45co")
+
+[node name="Bola" type="Sprite2D" parent="BackGround/Bola" unique_id=2113298506]
+position = Vector2(-24.416927, -4.9999995)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_yhuuu")
+
+[node name="Bola2" type="CollisionShape2D" parent="BackGround/Bola" unique_id=393283991]
+position = Vector2(-22.41066, -1.9999995)
+scale = Vector2(0.75, 0.75)
+shape = SubResource("CircleShape2D_yhuuu")
