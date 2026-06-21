@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://226v7kpm1mf3" path="res://player.gd" id="1_nxjfv"]
 [ext_resource type="Texture2D" uid="uid://r0aklbn7jj4q" path="res://Tomás.png" id="2_c3wx7"]
 [ext_resource type="Texture2D" uid="uid://c8cqjh0a0yyxw" path="res://sol.png" id="3_c3wx7"]
+[ext_resource type="Texture2D" uid="uid://unqlplusjawt" path="res://chute_de_direita.png" id="3_eonkn"]
+[ext_resource type="Texture2D" uid="uid://b3o5f1udjn485" path="res://baliza2.png" id="3_x0rtm"]
 [ext_resource type="Texture2D" uid="uid://cddrl2i2unkye" path="res://baliza1.png" id="4_yhuuu"]
 [ext_resource type="Script" uid="uid://by08wh75lini8" path="res://bola.gd" id="5_y45co"]
 [ext_resource type="Texture2D" uid="uid://7dgn2perjrl5" path="res://Bola.png" id="5_yhuuu"]
@@ -11,6 +13,27 @@
 load_path = "res://.godot/imported/fundo.png-f9fbcbdbc60f772e394ba2c913e799d2.ctex"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pqrlx"]
+radius = 13.793098
+height = 35.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x32el"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_c3wx7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_eonkn")
+}],
+"loop": true,
+"name": &"kick",
+"speed": 15.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c3wx7"]
 size = Vector2(320, 72.5)
@@ -26,10 +49,13 @@ size = Vector2(15, 32)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yhuuu"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x0rtm"]
+size = Vector2(17, 32)
+
 [node name="Node2D" type="Node2D" unique_id=1011260576]
 
 [node name="BackGround" type="Sprite2D" parent="." unique_id=397145876]
-position = Vector2(210.34062, 103)
+position = Vector2(214, 105)
 scale = Vector2(0.996875, 1)
 texture = SubResource("CompressedTexture2D_pqrlx")
 offset = Vector2(-51, -13)
@@ -39,16 +65,16 @@ position = Vector2(-122.99999, -0.99999994)
 scale = Vector2(0.4, 0.4)
 script = ExtResource("1_nxjfv")
 
-[node name="Sprite2D" type="Sprite2D" parent="BackGround/Player" unique_id=1944018303]
-position = Vector2(-1.8181963, -170)
-scale = Vector2(2, 2)
-texture = ExtResource("2_c3wx7")
-offset = Vector2(-37.499996, 62.499985)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BackGround/Player" unique_id=2036680648]
-position = Vector2(-79.56114, -40)
+position = Vector2(-71.18341, -17.5)
 scale = Vector2(2, 2)
 shape = SubResource("CapsuleShape2D_pqrlx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BackGround/Player" unique_id=1795603659]
+position = Vector2(-71.18341, -20)
+scale = Vector2(1.5160661, 1.9999999)
+sprite_frames = SubResource("SpriteFrames_x32el")
+frame_progress = 0.6155713
 
 [node name="Chao" type="StaticBody2D" parent="BackGround" unique_id=514456866]
 position = Vector2(0, 5)
@@ -64,10 +90,10 @@ position = Vector2(107, -24)
 position = Vector2(2.0000062, -24)
 shape = SubResource("RectangleShape2D_pqrlx")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="BackGround" unique_id=795983630]
+[node name="paranao sair do mapa" type="StaticBody2D" parent="BackGround" unique_id=795983630]
 position = Vector2(-103, -24)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BackGround/StaticBody2D" unique_id=674683973]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackGround/paranao sair do mapa" unique_id=674683973]
 position = Vector2(-106.99532, -25)
 shape = SubResource("RectangleShape2D_nxjfv")
 
@@ -99,3 +125,13 @@ texture = ExtResource("5_yhuuu")
 position = Vector2(-22.41066, -1.9999995)
 scale = Vector2(0.75, 0.75)
 shape = SubResource("CircleShape2D_yhuuu")
+
+[node name="Baliza esquerda" type="StaticBody2D" parent="." unique_id=1129218055]
+
+[node name="Sprite2D" type="Sprite2D" parent="Baliza esquerda" unique_id=864408715]
+position = Vector2(19, 94)
+texture = ExtResource("3_x0rtm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Baliza esquerda" unique_id=59334186]
+position = Vector2(11.5, 94)
+shape = SubResource("RectangleShape2D_x0rtm")
